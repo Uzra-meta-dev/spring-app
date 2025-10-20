@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  web-app:
+    build:
+      context: ../
+      dockerfile: app.Dockerfile
+    image: uzrameta/test-app:1.0
+
+    ports:
+      - '8082:8080'
+    networks:
+      - web-app-net
+    links:
+      - "postgres:post-con"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:18
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - web-app-net
+
+
+networks:
+  web-app-net:
+    driver: bridge
