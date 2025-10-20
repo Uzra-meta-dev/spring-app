@@ -8,3 +8,4 @@
 
 rootProject.name = 'spring-starter'
 
+include 'common-logging-spring-boot-starter'
