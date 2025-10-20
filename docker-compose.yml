@@ -1,5 +1,6 @@
 version: '3'
 
+
 services:
   web-app:
     build:
@@ -23,6 +24,7 @@ services:
       - POSTGRES_PASSWORD=postgres
     networks:
       - web-app-net
+    restart: always
 
 
 networks:
