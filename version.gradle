@@ -1,0 +1,8 @@
+ext{
+    versions = [
+            'testcontainers': '1.21.3',
+            'querydsljakarta': '5.1.0:jakarta',
+            'gradleversion': '9.1.0',
+            'swagger':'2.8.13'
+    ]
+}

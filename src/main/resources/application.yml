@@ -1,0 +1,68 @@
+db:
+  username: ${username.value:postgres}
+  password: pass
+  url: jdbc:postgresql://localhost:5433/postgres
+  driver: PostgresDriver
+  hosts: localhost,127.0.0.1
+  properties:
+    first: 123
+    second: 567x
+    third.value: Third
+  pool:
+    size: 12
+    timeout: 10
+  pools:
+      - size: 1
+        timeout: 1
+      - size: 2
+        timeout: 2
+      - size: 3
+        timeout: 3
+
+app:
+  image:
+    bucket: C:\Users\AntiMeta\IdeaProjects\spring-starter\images
+  common:
+    logging:
+      enabled: true
+      level: INFO
+
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    format:
+      date: iso
+  datasource:
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties.hibernate:
+        batch_size: 50
+        fetch_size: 50
+        format_sql: true
+        show-sql: true #deprecated
+    show-sql: true
+    open-in-view: false
+  messages:
+    basename: messages
+
+
+
+
+logging:
+  level:
+    root: INFO
+    com.javalin.spring.database.pool.ConnectionPool: INFO
+    org.springframework.jdbc.core.JdbcTemplate: TRACE
+
+  file:
+    name: javalin.log
+    path: /
+

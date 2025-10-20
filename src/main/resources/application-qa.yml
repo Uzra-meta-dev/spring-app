@@ -1,0 +1,4 @@
+db:
+  pool:
+    size:24
+

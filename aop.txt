@@ -1,0 +1,45 @@
+
+
+
+    /*
+        this - check AOP proxy classtype
+        target - check target object classtype
+     */
+    @Pointcut("this(org.springframework.data.repository.Repository)")
+    public void isRepositoryLayer() {
+    }
+
+    /*
+     @annotation - check annotation on method level
+     */
+    @Pointcut("com.javalin.spring.aop.CommonPointcuts.isControllerLayer()" +
+            " && @annotation(org.springframework.web.bind.annotation.GetMapping)")
+    public void hasGetMapping() {
+    }
+
+    /*
+        args - check method param type
+        *- any param type
+        .. - 0+ any params type
+     */
+    @Pointcut("com.javalin.spring.aop.CommonPointcuts.isControllerLayer() " +
+            "&& args(org.springframework.ui.Model,..)")
+    public void hasModelParam() {
+    }
+
+    /*
+        @args - check annotation on the param type
+        *- any param type
+        .. - 0+ any params type
+     */
+    @Pointcut("com.javalin.spring.aop.CommonPointcuts.isControllerLayer()erLayer() " +
+            "&& @args(com.javalin.spring.validation.UserInfo,..)")
+    public void hasUserInfoParamAnnotation() {
+    }
+
+    /*
+        bean - check bean name
+     */
+    @Pointcut("bean(*Service)")
+    public void isServiceLayerBean() {
+    }
